@@ -6,8 +6,8 @@
 
   LunchCheckController.$inject = ['$scope'];
   function LunchCheckController($scope) {
-    $scope.userText = "Check1";
-    $scope.finalResult = "Default Final Result";
+    $scope.userText = "";
+    $scope.finalResult = "";
 
     $scope.checkIfTooMuch = function (){
       $scope.finalResult = splitString($scope.userText, ",");
