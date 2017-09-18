@@ -7,8 +7,58 @@
     <title>First Angular App</title>
   </head>
   <body>
+
+    <div ng-controller='myFirstController as menu'>
+      <h1>New Code Testing 9/14/2017</h1>
+
+
+
+      <ul>
+        <li ng-repeat="category in menu.categories">
+          {{category.id}},
+          {{category.short_name}},{{category.name}}
+        </li>
+      </ul>
+
+    </div>
+
+
+<!--
+
     <h1>Name Calculator</h1>
     <div ng-controller="myFirstController">
+
+      //this is how you apply a search filter to ng-repeat
+      Search List for: <input type="text" ng-model="searchListStr"/>
+      <ul>
+        <li ng-repeat="item in ShoppingList1 | filter : searchListStr">
+          {{$index + 1}}. {{item}}
+        </li>
+      </ul>
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
+
+      {{button1_output}}
+      <button ng-click="button1Click()">Button 1</button>
+
+      <br/>
+      <br/>
+
+
+      <input type="text" ng-model = "userText1"/>
+      {{userText1 | truth : 'rahul' : 'michelle'}}
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
       Name:
       <input type="text" ng-model="inputName" ng-keyup="calculateValue();">
       <br/>
@@ -24,5 +74,7 @@
       <input type="text" ng-model="upperNameInput" ng-blur="convertToUpper();"/>
 
     </div>
+
+  -->
   </body>
 </html>

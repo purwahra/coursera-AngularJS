@@ -4,7 +4,69 @@
 'use strict';
 
 angular.module('myFirstApp',[])
-.controller('myFirstController',function($scope, $filter){
+.controller('myFirstController',myFirstController)
+.service('menuCategoryService',menuCategoryService);
+
+myFirstController.$inject = ['menuCategoryService'];
+
+function myFirstController(menuCategoryService) {
+
+  var menu = this;
+
+  var promise = menuCategoryService.getMenuCategories();
+
+  promise.then(function (response){
+    menu.categories = response.data;
+  })
+  .catch(function (error){
+    console.log("something went wrong!");
+  })
+
+}
+
+menuCategoryService.$inject = ['$http'];
+function menuCategoryService($http){
+  var service = this;
+
+  service.getMenuCategories = function(){
+    var response = $http({
+      method: "GET",
+      url: ("http://davids-restaurant.herokuapp.com/categories.json")
+    });
+
+    return response;
+  }
+}
+
+
+
+
+/*
+var ShoppingList1 = ["milk","eggs","bananas","buns","choclate","coke"];
+
+angular.module('myFirstApp',[])
+.controller('myFirstController',myFirstController)
+.filter('loves',LovesFilter)
+.filter('truth',AllTruthFilter);
+
+myFirstController.$inject = ['$scope','lovesFilter'];
+
+function myFirstController($scope,lovesFilter)
+{
+
+$scope.ShoppingList1 = ShoppingList1;
+$scope.searchListStr = "";
+
+  $scope.button1_output = "he likes choclates";
+
+  $scope.button1Click = function(){
+    $scope.button1_output = lovesFilter($scope.button1_output);
+  }
+
+  $scope.userText1 = "";
+
+  //------OLD CODE--------------
+
   $scope.inputName = "";
   $scope.totalValue = 0;
 
@@ -32,7 +94,28 @@ angular.module('myFirstApp',[])
   }
 
 
-});
+};
 
+
+
+
+
+function LovesFilter(){
+  return function(input){
+    input = input || "";
+    input = input.replace("likes","loves");
+    return input;
+  }
+}
+
+function AllTruthFilter(){
+  return function(input,target,replace){
+    input = input || "";
+    input = input.replace(target,replace);
+    return input;
+  }
+}
+
+*/
 
 })();
