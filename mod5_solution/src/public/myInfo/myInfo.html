@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="text-center">
+    <h3>MY INFO</h3>
+    <div ng-if="myInfoCtrl.userInfo == null">
+      Not Signed Up Yet.
+      <a ui-sref="SignUp">Sign Up Now!</a>
+    </div>
+
+    <div ng-if="myInfoCtrl.userInfo != null">
+      <h3>First Name: {{myInfoCtrl.userInfo.firstName}}</h3>
+      <h3>Last Name: {{myInfoCtrl.userInfo.lastName}}</h3>
+      <h3>Email: {{myInfoCtrl.userInfo.email}}</h3>
+      <h3>Phone: {{myInfoCtrl.userInfo.phone}}</h3>
+
+      <h2>FAVORITE DISH DETAILS:</h2>
+
+      <h3>Name: {{myInfoCtrl.userInfo.menuData.name}}</h3>
+      <h3>Item #: {{myInfoCtrl.userInfo.menuData.short_name}}</h3>
+
+      <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.userInfo.menuData.short_name}}.jpg" alt="{{myInfoCtrl.userInfo.menuData.name}}">
+
+
+    </div>
+
+  </div>
+
+
+</div>
